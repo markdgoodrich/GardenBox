@@ -40,21 +40,31 @@ import threading
 from envirophat import light
 
 def solar():
+    
+    data = open("sundata.txt.", "ab")
+
     light = light.light()
 
-    return "At %d:%d, the plant has %d sunlight" %(time.localtime[3], time.localtime[4], light)
+    sun = "At %d:%d, the plant has %d sunlight" %(time.localtime()[3], time.localtime()[4], light)
+    
+    data.write(sun)
+    data.write("\n")
+    data.close()
+    
+    return sun
 
 
-
-
-
+print solar()
 
 
 while True:                        #Endless loop
     a = time.localtime()[5]         #a is a minute counter, [5] deals in seconds, [4] in minutes
-    if a % 15 == 0:                      #every 15 minutes (when seconds = 0)
-        print solar
+    if a % 15 == 0:                 #every 15 minutes (when seconds = 0)
+        print solar()
+        time.sleep(15)
+
 
         
+
 
 
