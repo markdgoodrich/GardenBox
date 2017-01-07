@@ -43,9 +43,9 @@ def solar():
     
     data = open("sundata.txt.", "ab")
 
-    light = light.light()
+    l = light.light()
 
-    sun = "At %d:%d, the plant has %d sunlight" %(time.localtime()[3], time.localtime()[4], light)
+    sun = "At %d:%d, the plant has %d sunlight" %(time.localtime()[3], time.localtime()[4], l)
     
     data.write(sun)
     data.write("\n")
