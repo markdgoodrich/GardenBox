@@ -21,8 +21,7 @@ def solar():
     
     sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")
 
-    #l = light.light()
-    l=45
+    l = light.light()
 
 
     sun = "%d.%d   %d" %(time.localtime()[3], time.localtime()[4], l)       #This format allows me to import the txt file to the Grapher application
