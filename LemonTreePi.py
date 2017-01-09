@@ -12,7 +12,8 @@ import threading
 
 
 
-from envirophat import light
+#from envirophat import light
+#from envirophat import weather
 
 
 
@@ -20,7 +21,8 @@ def solar():
     
     sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")
 
-    l = light.light()
+    #l = light.light()
+    l=45
 
 
     sun = "%d.%d   %d" %(time.localtime()[3], time.localtime()[4], l)       #This format allows me to import the txt file to the Grapher application
@@ -31,8 +33,6 @@ def solar():
     
     return sun
 
-
-#print solar()
 
 
 while True:                                                                 #runs constantly
@@ -46,7 +46,7 @@ while True:                                                                 #run
         sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create a new file with the date
 
     
-    if minute % 15 == 0:                 #every 15 minutes 
+    if minute % 2 == 0:                 #every 15 minutes 
         print solar()
         time.sleep(60)                      #to prevent duplicate data
 
