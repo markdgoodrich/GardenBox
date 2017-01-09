@@ -12,7 +12,7 @@ import threading
 
 
 
-#from envirophat import light
+from envirophat import light
 #from envirophat import weather
 
 
