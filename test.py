@@ -45,7 +45,7 @@ def solar():
 
     l = light.light()
 
-    sun = "At %d:%d, the plant has %d sunlight" %(time.localtime()[3], time.localtime()[4], l)
+    sun = "%d.%d   %d" %(time.localtime()[3], time.localtime()[4], l)
     
     data.write(sun)
     data.write("\n")
