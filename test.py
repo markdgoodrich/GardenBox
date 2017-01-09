@@ -58,8 +58,8 @@ print solar()
 
 
 while True:                        #Endless loop
-    a = time.localtime()[5]         #a is a minute counter, [5] deals in seconds, [4] in minutes
-    if a == 0:                 #every 15 minutes (when seconds = 0)
+    a = time.localtime()[4]         #a is a minute counter, [5] deals in seconds, [4] in minutes
+    if a % 15 == 0:                 #every 15 minutes (when seconds = 0)
         print solar()
         time.sleep(59)
 
