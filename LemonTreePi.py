@@ -46,7 +46,7 @@ while True:                                                                 #run
         sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create a new file with the date
 
     
-    if minute % 2 == 0:                 #every 15 minutes 
+    if minute % 15 == 0:                 #every 15 minutes 
         print solar()
         time.sleep(60)                      #to prevent duplicate data
 
