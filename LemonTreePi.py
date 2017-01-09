@@ -18,7 +18,7 @@ from envirophat import light
 
 def solar():
     
-##    data = open("sundata_.txt", "ab")
+    data = open("sundata_.txt", "ab")
 
     l = light.light()
 
