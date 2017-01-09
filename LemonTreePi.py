@@ -25,9 +25,9 @@ def solar():
 
     sun = "%d.%d   %d" %(time.localtime()[3], time.localtime()[4], l)       #This format allows me to import the txt file to the Grapher application
     
-    data.write(sun)
-    data.write("\n")
-    data.close()
+    sun_data.write(sun)
+    sun_data.write("\n")
+    sun_data.close()
     
     return sun
 
