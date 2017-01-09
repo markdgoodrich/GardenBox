@@ -18,7 +18,7 @@ from envirophat import light
 
 def solar():
     
-    data = open("sundata_.txt", "ab")
+    sun_data = open("sundata_.txt", "ab")
 
     l = light.light()
 
@@ -43,7 +43,7 @@ while True:                                                                 #run
     day = time.localtime()[2]
 
     if hour == 0:                                                           #at the start of a new day...
-        data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create a new file with the date
+        sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create a new file with the date
 
     
     if minute % 15 == 0:                 #every 15 minutes 
