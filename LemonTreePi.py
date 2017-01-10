@@ -34,6 +34,7 @@ def solar():
         
     sun_data.write(sun)
     sun_data.write("\n")
+    time.sleep(60)
     sun_data.close()
     
     return sun
