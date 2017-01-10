@@ -76,7 +76,7 @@ while True:                                                                 #run
 
     
     if minute % 15 == 0 and second == 0:                 #every 15 minutes
-        time.sleep(2)
+        time.sleep(60)
         solar()
                                            #to prevent duplicate data
 
