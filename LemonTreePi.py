@@ -81,7 +81,7 @@ while True:                                                                 #run
 
 #----Below is a rough execution of the temperature test every 12 hours------#
 
-    if hour % 2 == 0 and second == 1:           #The idea is that, every two hours, on the first second, this will excecute once
+    if hour % 2 == 0 and second == 2:           #The idea is that, every two hours, on the first second, this will excecute once
         temperature()
         time.sleep(2)
         
