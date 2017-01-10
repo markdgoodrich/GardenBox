@@ -77,13 +77,13 @@ while True:                                                                 #run
     
     if minute % 15 == 0 and second == 0:                 #every 15 minutes 
         solar()
-        time.sleep(2)                                   #to prevent duplicate data
+        time.sleep(.1)                                   #to prevent duplicate data
 
 #----Below is a rough execution of the temperature test every 12 hours------#
 
     if hour % 2 == 0 and second == 3:           #The idea is that, every two hours, on the first second, this will excecute once
         temperature()
-        time.sleep(2)
+        time.sleep(.1)
         
 
 
