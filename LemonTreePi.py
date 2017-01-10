@@ -77,7 +77,7 @@ while True:                                                                 #run
     
     if minute % 15 == 0 and second == 0:                 #every 15 minutes 
         solar()
-        time.sleep(1)                                   #to prevent duplicate data
+        time.sleep(2)                                   #to prevent duplicate data
 
 #----Below is a rough execution of the temperature test every 12 hours------#
 
