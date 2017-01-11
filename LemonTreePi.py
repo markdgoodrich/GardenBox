@@ -4,7 +4,7 @@
 
 import math
 import time
-import threading
+#import threading
 
 
 ##def plant_diagnostic():
@@ -34,7 +34,6 @@ def solar():
         
     sun_data.write(sun)
     sun_data.write("\n")
-    time.sleep(60)
     sun_data.close()
     
     return sun
@@ -76,9 +75,10 @@ while True:                                                                 #run
 
 
     
-    if minute % 15 == 0:    # and second == 0:                 #every 15 minutes
-        time.sleep(60)
+    if minute % 15 == 0 and second == 0:                 #every 15 minutes
         solar()
+        time.sleep(1)
+        
                                            #to prevent duplicate data
 
 #----Below is a rough execution of the temperature test every 12 hours------#
