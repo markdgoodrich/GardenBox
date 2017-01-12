@@ -70,7 +70,7 @@ while True:                                                                 #run
     
 
     if hour == 0:                                                           #at the start of a new day...
-        sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create new files with the date
+#        sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create new files with the date
 #        temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab")            #temperature data
 
 
