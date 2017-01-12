@@ -40,20 +40,20 @@ def solar():
 
 
 
-##
-##def temperature():
-##    
-##    temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab") #year, month, day variables
-##
-##    fahrenheit = 1.8*float(weather.temperature())+32
-##
-##    temp = "%d   %d" %(time.localtime()[3], fahrenheit)
-##
-##    temp_data.write(temp)
-##    temp_data.write("\n")
-##    temp_data.close()
-##
-##    return temp
+
+def temperature():
+    
+    temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab") #year, month, day variables
+
+    fahrenheit = 1.8*float(weather.temperature())+32
+
+    temp = "%d   %d" %(time.localtime()[3], fahrenheit)
+
+    temp_data.write(temp)
+    temp_data.write("\n")
+    temp_data.close()
+
+    return temp
 
 
 
@@ -83,9 +83,9 @@ while True:                                                                 #run
 
 #----Below is a rough execution of the temperature test every 12 hours------#
 
-#    if hour % 2 == 0 and minute == 0 and second == 3:           #The idea is that, every two hours, on the first second, this will excecute once
-#        time.sleep(2)
-#        temperature()
+    if hour % 2 == 0 and minute == 0 and second == 3:           #The idea is that, every two hours, on the first second, this will excecute once
+        temperature()
+        time.sleep(2)
         
 
 
