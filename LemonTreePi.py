@@ -4,17 +4,11 @@
 
 import math
 import time
-#import threading
-
-
-##def plant_diagnostic():
-##    print "Water level is %s. The plant has recieved %d hours of sunlight" %(water(), solar())
-
-
-
 from envirophat import light
 from envirophat import weather
 
+##def plant_diagnostic():
+##    print "Water level is %s. The plant has recieved %d hours of sunlight" %(water(), solar())
 
 
 def solar():
@@ -39,8 +33,6 @@ def solar():
     return sun
 
 
-
-
 def temperature():
     
     temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab") #year, month, day variables
@@ -59,7 +51,6 @@ def temperature():
 
 
 
-
 while True:                                                                 #runs constantly
     second = time.localtime()[5]
     minute = time.localtime()[4]         
@@ -70,7 +61,7 @@ while True:                                                                 #run
     
 
     if hour == 0:                                                           #at the start of a new day...
-#        sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create new files with the date
+        sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create new files with the date
 #        temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab")            #temperature data
 
 
@@ -81,7 +72,7 @@ while True:                                                                 #run
         
                                            #to prevent duplicate data
 
-#----Below is a rough execution of the temperature test every 12 hours------#
+#----Below is a rough execution of the temperature test every 2 hours------#
 
     if hour % 2 == 0 and minute == 0 and second == 3:           #The idea is that, every two hours, on the first second, this will excecute once
         temperature()
@@ -92,4 +83,12 @@ while True:                                                                 #run
 
 #This latest update now creates a new file to store the solar data in at the beginning of each day.
 #Also, the light data is now in a form that can be imported by Grapher.  This includes proper adjsut of time to x-axis coordinates
-# A commented-out section of the Temperature sensor is included, but I want to ensure that the solar function is solid before implementing 
+
+
+
+
+#Things to do:  Calibrate temperature sensor. Use A/C readout, as well as candy termometer status
+#               Write Soil moisture sensor function
+#               Have the pi email me every day with the old data (sun, temperature, soil status)
+
+#STOP   using multiple 'nohup' commands
