@@ -34,7 +34,7 @@ def temperature():  #Need to calibrate this; it's reading CPU heat
     
     temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab") 
 
-    fahrenheit = 1.8*float(weather.temperature())+32
+    fahrenheit = 1.8*float(weather.temperature()-11)+32                             #11 is a constant to account for the CPU temp difference
 
     temp = "%d   %d" %(time.localtime()[3], fahrenheit)
 
@@ -85,4 +85,4 @@ while True:                                                                     
 #Things to do:  Calibrate temperature sensor. Use A/C readout, as well as candy termometer.
 #                   Rewrite temperature function to accomodate
 #               Write Soil moisture sensor function
-#               Have the pi email me every day with the old data (sun, temperature, soil status)
+#               Have the pi email me every day with the day's data (sun, temperature, soil status)
