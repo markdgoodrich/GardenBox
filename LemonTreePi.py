@@ -34,7 +34,7 @@ def temperature():  #Need to calibrate this; it's reading CPU heat
     
     temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab") 
 
-    fahrenheit = 1.8*float(weather.temperature()-11)+32                             #11 is a constant to account for the CPU temp difference
+    fahrenheit = 1.8*(weather.temperature()-11)+32                             #11 is a constant to account for the CPU temp difference
 
     temp = "%d   %d" %(time.localtime()[3], fahrenheit)
 
