@@ -7,10 +7,11 @@ import time
 from envirophat import light
 from envirophat import weather
 
+import os                                                                         #For the scp file copy    
 
 def solar():
     
-    sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")
+    sun_data = open("sun_%d_%d_%d.txt" %(year, month, day), "ab")
 
     l = light.light()
 
@@ -30,11 +31,11 @@ def solar():
     return sun
 
 
-def temperature():  #Need to calibrate this; it's reading CPU heat
+def temperature():  
     
-    temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab") 
+    temp_data = open("temp_%d_%d_%d.txt" %(year, month, day), "ab") 
 
-    fahrenheit = 1.8*(weather.temperature()-11)+32                             #11 is a constant to account for the CPU temp difference
+    fahrenheit = 1.8*(weather.temperature()-11)+32                                  #11 is a constant to account for the CPU temp difference
 
     temp = "%d   %d" %(time.localtime()[3], fahrenheit)
 
@@ -48,7 +49,7 @@ def temperature():  #Need to calibrate this; it's reading CPU heat
 
 
 
-while True:                                                                     #runs constantly
+while True:                                                                         #runs constantly
     second = time.localtime()[5]
     minute = time.localtime()[4]         
     hour = time.localtime()[3]
@@ -56,33 +57,31 @@ while True:                                                                     
     month = time.localtime()[1]
     year = time.localtime()[0]
     
-
-#    if hour == 0: #This is probably not necessaryy                              #at the start of a new day...
-#        sun_data = open("sundata_%d_%d_%d.txt" %(year, month, day), "ab")       #... create new files with the date
-#        temp_data = open("tempdata_%d_%d_%d.txt" %(year, month, day), "ab")           #temperature data
-
-
-    
-    if minute % 15 == 0 and second == 0:                #Records every 15 minutes
+    if minute % 15 == 0 and second == 0:                                            #Records every 15 minutes
         solar()
-        time.sleep(1)                                   #Pause to prevent duplicate data
+        time.sleep(1)                                                               #Pause to prevent duplicate data
         
-    if hour % 2 == 0 and minute == 0 and second == 3:   #Records every 2 hours, after solar data is collected
+    if hour % 2 == 0 and minute == 0 and second == 3:                               #Records every 2 hours, after solar data is collected
         temperature()
-        time.sleep(1)                                   #Pause to prevent duplicate data
+        time.sleep(1)                                                               #Pause to prevent duplicate data
         
+
+    if hour == 23 and minute== 59 and second == 59:                               #Before midnight each day, copy data to specified directory
+        os.system("scp %s owner1@192.168.0.100:~/Documents/LemonTreePi/Data_Text" %(sun_data.name))
+        os.system("scp %s owner1@192.168.0.100:~/Documents/LemonTreePi/Data_Text" %(temp_data.name))
 
 
 
 #This update:
 #   Cleaned up a good bit of the code, and made the comments easier to understand
-#   Hid the beggining-of-the-day loop (if hour == 0:), since the files should be created and opened properly when their functions are called anyways.
-#       I will delete this once I'm sure it's not necessary
-#   No duplicate data issues, which were caused by multiple 'nohup' executes in ther Terminal. (My bad)
+#   Temperature sensor is calibrated to give non-CPU heat
+#   Changed file names from "sumdata_X_X_X" to "sun_X_X_X"
+#   Figured out permissions to let pi scp to Mac without password (not coded here)
+#   To make file transfer work: must have port 22 active (instructables.com/answers/Port-22-Connection-refused-using-ssh-remote-a) [x]
+#   Must generate keys & share public with host ocmputer [x]           
+#Currently commented out is the section that, before midnight each day, will copy the data files to a specified computer & directory on the local system
 
 
+#Things to do:  Write Soil moisture sensor function
+#               Optional: Have a report emailed every day as well
 
-#Things to do:  Calibrate temperature sensor. Use A/C readout, as well as candy termometer.
-#                   Rewrite temperature function to accomodate
-#               Write Soil moisture sensor function
-#               Have the pi email me every day with the day's data (sun, temperature, soil status)
