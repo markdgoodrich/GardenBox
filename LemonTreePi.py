@@ -66,10 +66,10 @@ while True:                                                                     
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
 
-#    if minute % 5 == 0 and second == 59:                               #Before midnight each day, copy data to specified directory
-##       os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(sun_data.name))
-#       os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(temp_data.name))
-#   #     time.sleep(1)
+    if minute % 5 == 0 and second == 59:                               #Before midnight each day, copy data to specified directory
+        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %sun_data.name)
+        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
+        time.sleep(1)
             #this is killing every instance
 
 
