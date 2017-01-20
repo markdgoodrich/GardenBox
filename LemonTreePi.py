@@ -66,9 +66,9 @@ while True:                                                                     
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
 
-    if hour == 23 and minute== 59 and second == 59:                               #Before midnight each day, copy data to specified directory
-        os.system("scp %s owner1@192.168.0.100:~/Documents/LemonTreePi/Data_Text" %(sun_data.name))
-        os.system("scp %s owner1@192.168.0.100:~/Documents/LemonTreePi/Data_Text" %(temp_data.name))
+    if hour == 7 and minute== 4 and second == 59:                               #Before midnight each day, copy data to specified directory
+        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(sun_data.name))
+        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(temp_data.name))
 
 
 
