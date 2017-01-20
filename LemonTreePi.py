@@ -66,10 +66,11 @@ while True:                                                                     
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
 
-    if minute % 5 == 0 and second == 59:                               #Before midnight each day, copy data to specified directory
-        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(sun_data.name))
-        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(temp_data.name))
-        time.sleep(1)
+#    if minute % 5 == 0 and second == 59:                               #Before midnight each day, copy data to specified directory
+#        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(sun_data.name))
+#        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %(temp_data.name))
+#        time.sleep(1)
+            #this is killing every instance
 
 
 
@@ -81,7 +82,6 @@ while True:                                                                     
 #   To make file transfer work: must have port 22 active (instructables.com/answers/Port-22-Connection-refused-using-ssh-remote-a) [x]
 #   Must generate keys & share public with host ocmputer [x]           
 #Currently commented out is the section that, before midnight each day, will copy the data files to a specified computer & directory on the local system
-
 
 #Things to do:  Write Soil moisture sensor function
 #               Optional: Have a report emailed every day as well
