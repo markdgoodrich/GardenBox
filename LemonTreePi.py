@@ -44,7 +44,9 @@ def temperature():
     temp_data.write(temp)
     temp_data.write("\n")
     temp_data.close()
+    os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
 
+    
     return temp
 
 
@@ -68,22 +70,13 @@ while True:                                                                     
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
 
-#    if minute % 5 == 0 and second == 59:                               #Before midnight each day, copy data to specified directory
-#        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %sun_data.name)       #sun_data not defined!!!!
-#        os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
-#        time.sleep(1)
-            #this is killing every instance
 
 
 
 #This update:
-#   Cleaned up a good bit of the code, and made the comments easier to understand
-#   Temperature sensor is calibrated to give non-CPU heat
-#   Changed file names from "sumdata_X_X_X" to "sun_X_X_X"
-#   Figured out permissions to let pi scp to Mac without password (not coded here)
-#   To make file transfer work: must have port 22 active (instructables.com/answers/Port-22-Connection-refused-using-ssh-remote-a) [x]
-#   Must generate keys & share public with host ocmputer [x]           
-#Currently commented out is the section that, before midnight each day, will copy the data files to a specified computer & directory on the local system
+#Once the function is invoked, it autoamtically sends (via scp) the file to the designated file path.
+#The issue with having the file call outside of the function is that the file name is not defiend outside of the function.
+#Keep an eye to see if temeprature will record, or if the scp takes more time than allocated
 
 #Things to do:  Write Soil moisture sensor function
 #               Optional: Have a report emailed every day as well
