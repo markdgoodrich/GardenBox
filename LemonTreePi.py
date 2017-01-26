@@ -58,7 +58,7 @@ def soil_moisture():
     soil_data = open("moist_%d_%d_%d.txt" %(year, month, day), "ab")
     avg_moisture = (analog.read(0) + analog.read(1) + analog.read(2))/3
     
-    moisture = "%d   %d" %(time.localtime()[3], avg_moisture)
+    moisture = "%d   %f" %(time.localtime()[3], avg_moisture)
     
     soil_data.write(moisture)
     soil_data.write("/n")
