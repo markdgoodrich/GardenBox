@@ -27,7 +27,7 @@ def solar():
     sun_data.write(sun)
     sun_data.write("\n")
     sun_data.close()
-    os.system("scp %s owner1@192.168.0.103:~/Documents/LemonTreePi/Data_Text" %sun_data.name)       #sun_data not defined!!!!
+    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %sun_data.name)       #sun_data not defined!!!!
 
     
     return sun
@@ -44,7 +44,7 @@ def temperature():
     temp_data.write(temp)
     temp_data.write("\n")
     temp_data.close()
-    os.system("scp %s owner1@192.168.0.103:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
+    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
 
     
     return temp
