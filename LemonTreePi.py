@@ -1,10 +1,9 @@
 #
 #   Lemon Tree monitoring
 #
-
 import math
 import time
-import os                                                                         #For the scp file copy    
+import os                                                                            
 from envirophat import light, weather, analog
 
 def solar():
@@ -26,10 +25,8 @@ def solar():
     sun_data.write("\n")
     sun_data.close()
     os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %sun_data.name)       #sun_data not defined!!!!
-
     
     return sun
-
 
 def temperature():  
     
@@ -44,17 +41,10 @@ def temperature():
     temp_data.close()
     os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
 
-    
     return temp
 
-
-#This si teh prototype soil mositure sensor
-#analog.read(0), analog.read(1), analog.read(2) are currently plugged into the Lemon Tree
-#I believe the sensors max out at a reading of around 4.2 (when submersed in water)
-#They register 0 when removed from water, and are just in air
-#I will do research on the proepr saturation for a Lemon Tree
-
 def soil_moisture():
+    
     soil_data = open("moist_%d_%d_%d.txt" %(year, month, day), "ab")
     avg_moisture = (analog.read(0) + analog.read(1) + analog.read(2))/3
     
@@ -78,20 +68,17 @@ while True:                                                                     
     
     if minute % 15 == 0 and second == 0:                                            #Records every 15 minutes
         solar()
-        soil_moisture()         #Move this down to every several hours, once testing is done
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
     if hour % 2 == 0 and minute == 1 and second == 0:                               #Records every 2 hours, after solar data is collected
         temperature()
+        soil_moisture()
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
 
-
-
-
 #This update:
-#Changed Temeprature to colelct every two hours when minute = 1: this should still colelct data then if the scp takes a long time
-#Added the soil_mositure sensor functionality.  I will eventually have it record less often then every 15 minutes
+#Changed Temeprature to collect every two hours when minute = 1: this should still collect data incase the fiel copy (scp) stumbles
+#Added the soil_mositure sensor functionality.  It will take data readings from all three sensors, as well as an average, every 2 hours
 
 #Things to do: 
 #               Optional: Have a report emailed every day as well
