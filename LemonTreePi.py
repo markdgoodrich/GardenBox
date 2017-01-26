@@ -78,7 +78,7 @@ while True:                                                                     
     
     if minute % 15 == 0 and second == 0:                                            #Records every 15 minutes
         solar()
-        soil_moisture()         #Move this down to every several hours, once testing is done
+#        soil_moisture()         #Move this down to every several hours, once testing is done
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
     if hour % 2 == 0 and minute == 1 and second == 0:                               #Records every 2 hours, after solar data is collected
