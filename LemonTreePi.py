@@ -4,10 +4,8 @@
 
 import math
 import time
-from envirophat import light
-from envirophat import weather
-
 import os                                                                         #For the scp file copy    
+from envirophat import light, weather, analog
 
 def solar():
     
@@ -50,7 +48,24 @@ def temperature():
     return temp
 
 
+#This si teh prototype soil mositure sensor
+#analog.read(0), analog.read(1), analog.read(2) are currently plugged into the Lemon Tree
+#I believe the sensors max out at a reading of around 4.2 (when submersed in water)
+#They register 0 when removed from water, and are just in air
+#I will do research on the proepr saturation for a Lemon Tree
 
+def soil_moisture():
+    soil_data = open("moist_%d_%d_%d.txt" %(year, month, day), "ab")
+    avg_moisture = (analog.read(0) + analog.read(1) + analog.read(2))/3
+    
+    moisture = "%d   %d" %(time.localtime()[3], avg_mositure)
+    
+    soil_data.write(moisture)
+    soil_data.write("/n")
+    soil_data.close()
+    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %soil_data.name)
+
+    return moisture
 
 
 while True:                                                                         #runs constantly
@@ -63,9 +78,10 @@ while True:                                                                     
     
     if minute % 15 == 0 and second == 0:                                            #Records every 15 minutes
         solar()
+        soil_moisture()         #Move this down to every several hours, once testing is done
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
-    if hour % 2 == 0 and minute == 0 and second == 3:                               #Records every 2 hours, after solar data is collected
+    if hour % 2 == 0 and minute == 1 and second == 0:                               #Records every 2 hours, after solar data is collected
         temperature()
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
@@ -74,10 +90,8 @@ while True:                                                                     
 
 
 #This update:
-#Once the function is invoked, it autoamtically sends (via scp) the file to the designated file path.
-#The issue with having the file call outside of the function is that the file name is not defiend outside of the function.
-#Keep an eye to see if temeprature will record, or if the scp takes more time than allocated
+#Changed Temeprature to colelct every two hours when minute = 1: this should still colelct data then if the scp takes a long time
+#Added the soil_mositure sensor functionality.  I will eventually have it record less often then every 15 minutes
 
-#Things to do:  Write Soil moisture sensor function
+#Things to do: 
 #               Optional: Have a report emailed every day as well
-
