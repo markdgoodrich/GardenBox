@@ -61,7 +61,7 @@ def soil_moisture():
     moisture = "%d   %f" %(time.localtime()[3], avg_moisture)
     
     soil_data.write(moisture)
-    soil_data.write("/n")
+    soil_data.write("\n")
     soil_data.close()
     os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %soil_data.name)
 
