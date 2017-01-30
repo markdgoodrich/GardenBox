@@ -24,7 +24,7 @@ def solar():
     sun_data.write(sun)
     sun_data.write("\n")
     sun_data.close()
-    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %sun_data.name)       #sun_data not defined!!!!
+    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %sun_data.name)        #Change to desired computer name, IP, and Directory
     
     return sun
 
@@ -39,7 +39,7 @@ def temperature():
     temp_data.write(temp)
     temp_data.write("\n")
     temp_data.close()
-    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %temp_data.name)
+    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %temp_data.name)   #Change to desired computer name, IP, and Directory
 
     return temp
 
@@ -53,7 +53,7 @@ def soil_moisture():
     soil_data.write(moisture)
     soil_data.write("\n")
     soil_data.close()
-    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %soil_data.name)
+    os.system("scp %s owner1@192.168.0.102:~/Documents/LemonTreePi/Data_Text" %soil_data.name)  #Change to desired computer name, IP, and Directory
 
     return moisture
 
@@ -70,15 +70,17 @@ while True:                                                                     
         solar()
         time.sleep(1)                                                               #Pause to prevent duplicate data
         
-    if hour % 2 == 0 and minute == 1 and second == 0:                               #Records every 2 hours, after solar data is collected
+    if hour % 2 == 0 and minute == 0 and second == 30:                               #Records every 2 hours, after solar data is collected
         temperature()
         soil_moisture()
         time.sleep(1)                                                               #Pause to prevent duplicate data
-        
+    
+    time.sleep(0.5)                                                                 #To prevent CPU from running at 99.9%
 
 #This update:
 #Changed Temeprature to collect every two hours when minute = 1: this should still collect data incase the fiel copy (scp) stumbles
-#Added the soil_mositure sensor functionality.  It will take data readings from all three sensors, as well as an average, every 2 hours
+#Added the soil_mositure sensor functionality.  It will take data readings from three sensors, as well as an average, every 2 hours
+#Added a sleep timer to try and prevent the CPU running at 99.9% constantly
 
 #Things to do: 
 #               Optional: Have a report emailed every day as well
