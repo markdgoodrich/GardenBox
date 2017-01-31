@@ -23,11 +23,11 @@ All data collected is automatically written and copied in a format that is compa
 
 Assembly
 --------
-*Soldering info for pHat & soil sensors here*
+*Add soldering info for pHat & soil sensors here*
 
 Installation
 ------------
-Once the Pi operating system is installed (I reccomend using the latest version of [Raspbian] (https://www.raspberrypi.org/downloads/raspbian/)), there are only a few steps for 
+Install the latest version of [Raspbian] (https://www.raspberrypi.org/downloads/raspbian/) onto the Pi.
 
 Install the Enviro pHat library onto the Pi by typing the following:
 ```
@@ -36,7 +36,7 @@ curl -sS get.pimoroni.com/envirophat | bash
 Type `y` when prompted, then restart the Pi to ensure the changes occur.
 
 
-Next, to install this repository, type:
+To install this repository, type:
 ```
 git clone https://github.com/markdgoodrich/GardenBox.git
 ```
@@ -55,4 +55,4 @@ cd GardenBox
 nohup python GardenBox.py &
 ```
 
-You can now `exit` from your Pi; the monitoring process will continue.
+You can now `exit` from your Pi; the monitoring process will continue without halting.
