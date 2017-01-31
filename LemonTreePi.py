@@ -1,11 +1,14 @@
 #
-#   Lemon Tree monitoring
+#   Lemon Tree & Windowsill garden monitoring
 #
 import math
 import time
 import os                                                                            
 from envirophat import light, weather, analog
 
+#The 'solar' function measures the amount of sunlight the Pi, and therefore plant, recieves.
+#The 'if' statements convert the current time to an appropriate coordiante on the x-axis.
+#This ensures accurate graphical data.
 def solar():
     
     sun_data = open("sun_%d_%d_%d.txt" %(year, month, day), "ab")
@@ -28,6 +31,9 @@ def solar():
     
     return sun
 
+#The 'temeprature' function measures the temperature in Farenheit.  
+#This function accomodates for the Enviro pHat measuring the CPU temperature and not the 'room temperature'.
+#This function outputs the accurate air/room temperature.
 def temperature():  
     
     temp_data = open("temp_%d_%d_%d.txt" %(year, month, day), "ab") 
@@ -43,6 +49,12 @@ def temperature():
 
     return temp
 
+#The 'soil_mositure' function takes data from the soil moisture sensors that can be attached to the Enviro pHat.
+#The minimum out is '0', with means no water is present.  The maximum output is '5', which means full-saturation (obtained by fully submerging in water).
+#I have three soil moisture sensors in my current plant; each one takes a separate reading, 
+#and this function writes all three out to a text file, as well as an average.  If you only want to use one sensor, 
+#only one 'analog.read()' needs to be implemented, and 'avg_moisture' reading can be deleted.
+#If you do use a different amount of soil sensors, make sure to remove the extra write calls from the 'moisture' variable
 def soil_moisture():
     
     soil_data = open("moist_%d_%d_%d.txt" %(year, month, day), "ab")
@@ -81,6 +93,7 @@ while True:                                                                     
 #Changed Temeprature to collect every two hours when minute = 1: this should still collect data incase the file copy (scp) stumbles
 #Added the soil_mositure sensor functionality.  It will take data readings from three sensors, as well as an average, every 2 hours
 #Added a sleep timer to try and prevent the CPU running at 99.9% constantly
+#Added descriptions of each function.
 
 #Things to do: 
 #               Optional: Have a report emailed every day as well
