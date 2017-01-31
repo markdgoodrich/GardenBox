@@ -1,5 +1,5 @@
 #
-#   Lemon Tree & Windowsill garden monitoring
+#   Potted Plant & Windowsill garden monitoring
 #
 import math
 import time
@@ -70,7 +70,7 @@ def soil_moisture():
     return moisture
 
 
-while True:                                                                         #runs constantly
+while True:                                                                         
     second = time.localtime()[5]
     minute = time.localtime()[4]         
     hour = time.localtime()[3]
