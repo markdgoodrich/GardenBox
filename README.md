@@ -21,9 +21,6 @@ All data collected is automatically written and copied in a format that is compa
   <img src="https://cloud.githubusercontent.com/assets/24979274/22262470/9b3d7c54-e236-11e6-800c-9a5fee420b1d.png"> 
 </p>
 
-Assembly
---------
-*Add soldering info for pHat & soil sensors here*
 
 Installation
 ------------
