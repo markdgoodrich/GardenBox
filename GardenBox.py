@@ -33,7 +33,7 @@ def solar():
     sun_data.write(sun)
     sun_data.write("\n")
     sun_data.close()
-    os.system("scp %s %s@%s:%s" %(sun_data.name, username, ip, directory))        #Change to desired computer name, IP, and Directory
+    os.system("scp %s %s@%s:%s" %(sun_data.name, username, ip, directory))        
     
     return sun
 
@@ -51,27 +51,27 @@ def temperature():
     temp_data.write(temp)
     temp_data.write("\n")
     temp_data.close()
-    os.system("scp %s %s@%s:%s" %(temp_data.name, username, ip, directory))   #Change to desired computer name, IP, and Directory
+    os.system("scp %s %s@%s:%s" %(temp_data.name, username, ip, directory))   
 
     return temp
 
 #The 'soil_mositure' function takes data from the soil moisture sensors that can be attached to the Enviro pHat.
 #The minimum out is '0', with means no water is present.  The maximum output is '5', which means full-saturation (obtained by fully submerging in water).
-#I have three soil moisture sensors in my current plant; each one takes a separate reading, 
+#I have two soil moisture sensors in my current plant; each one takes a separate reading, 
 #and this function writes all three out to a text file, as well as an average.  If you only want to use one sensor, 
 #only one 'analog.read()' needs to be implemented, and 'avg_moisture' reading can be deleted.
 #If you do use a different amount of soil sensors, make sure to remove the extra write calls from the 'moisture' variable
 def soil_moisture():
     
     soil_data = open("moist_%d_%d_%d.txt" %(year, month, day), "ab")
-    avg_moisture = (analog.read(0) + analog.read(1) + analog.read(2))/3
+    avg_moisture = (analog.read(0) + analog.read(1))/2
     
     moisture = "%d   %f    %f  %f  %f" %(time.localtime()[3], avg_moisture, analog.read(0), analog.read(1), analog.read(2))
     
     soil_data.write(moisture)
     soil_data.write("\n")
     soil_data.close()
-    os.system("scp %s %s@%s:%s" %(soil_data.name, username, ip, directory))  #Change to desired computer name, IP, and Directory
+    os.system("scp %s %s@%s:%s" %(soil_data.name, username, ip, directory))  
 
     return moisture
 
@@ -96,10 +96,7 @@ while True:
     time.sleep(0.5)                                                                 #To prevent CPU from running at 99.9%
 
 #This update:
-#Changed Temeprature to collect every two hours when minute = 1: this should still collect data incase the file copy (scp) stumbles
-#Added the soil_mositure sensor functionality.  It will take data readings from three sensors, as well as an average, every 2 hours
-#Added a sleep timer to try and prevent the CPU running at 99.9% constantly
-#Added descriptions of each function.
+#Added a prompt for user-specified computer & directory for exported data
 
 #Things to do: 
 #               Optional: Have a report emailed every day as well
