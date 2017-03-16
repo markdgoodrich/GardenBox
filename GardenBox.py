@@ -11,7 +11,7 @@ username = raw_input("Type in the User name for your computer (the one you'll be
 ip = raw_input("Type in the IP address of your computer (example: 192.168.0.100): ")
 directory = raw_input("Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): ")
 
-os.system("nohup python Gardenbox.py &")        #Ignores the hangup signal, allowing it to operate without SSH active
+os.system("nohup python GardenBox.py &")        #Ignores the hangup signal, allowing it to operate without SSH active
 
 #The 'solar' function measures the amount of sunlight the Pi, and therefore plant, recieves.
 #The 'if' statements convert the current time to an appropriate coordiante on the x-axis.
@@ -19,7 +19,6 @@ os.system("nohup python Gardenbox.py &")        #Ignores the hangup signal, allo
 def solar():
     
     sun_data = open("sun_%d_%d_%d.txt" %(year, month, day), "ab")
-
     l = light.light()
 
     if time.localtime()[4] == 15:
@@ -44,7 +43,6 @@ def solar():
 def temperature():  
     
     temp_data = open("temp_%d_%d_%d.txt" %(year, month, day), "ab") 
-
     fahrenheit = 1.8*(weather.temperature()-11)+32                                  #11 is a constant to account for the CPU temp difference
 
     temp = "%d   %d" %(time.localtime()[3], fahrenheit)
@@ -75,7 +73,6 @@ def soil_moisture():
     os.system("scp %s %s@%s:%s" %(soil_data.name, username, ip, directory))  
 
     return moisture
-
 
 while True:                                                                         
     second = time.localtime()[5]
