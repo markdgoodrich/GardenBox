@@ -6,7 +6,7 @@ import time
 import os                                                                            
 from envirophat import light, weather, analog
 
-#prompts the user for the sepcifics of the computer where the data will be exported to
+#prompts the user for the specifics of the computer where the data will be exported to
 username = raw_input("Type in the User name for your computer (the one you'll be sending the data files to): ")
 ip = raw_input("Type in the IP address of your computer (example: 192.168.0.100): ")
 directory = raw_input("Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): ")
@@ -37,7 +37,7 @@ def solar():
     
     return sun
 
-#The 'temeprature' function measures the temperature in Farenheit.  
+#The 'temperature' function measures the temperature in Farenheit.  
 #This function accomodates for the Enviro pHat measuring the CPU temperature and not the 'room temperature'.
 #This function outputs the accurate air/room temperature.
 def temperature():  
@@ -58,7 +58,7 @@ def temperature():
 #The 'soil_mositure' function takes data from the soil moisture sensors that can be attached to the Enviro pHat.
 #The minimum out is '0', with means no water is present.  The maximum output is '5', which means full-saturation (obtained by fully submerging in water).
 #I have two soil moisture sensors in my current plant; each one takes a separate reading, 
-#and this function writes all three out to a text file, as well as an average.  If you only want to use one sensor, 
+#and this function writes both out to a text file, as well as an average.  If you only want to use one sensor, 
 #only one 'analog.read()' needs to be implemented, and 'avg_moisture' reading can be deleted.
 #If you do use a different amount of soil sensors, make sure to remove the extra write calls from the 'moisture' variable
 def soil_moisture():
@@ -66,7 +66,7 @@ def soil_moisture():
     soil_data = open("moist_%d_%d_%d.txt" %(year, month, day), "ab")
     avg_moisture = (analog.read(0) + analog.read(1))/2
     
-    moisture = "%d   %f    %f  %f  %f" %(time.localtime()[3], avg_moisture, analog.read(0), analog.read(1), analog.read(2))
+    moisture = "%d   %f    %f  %f" %(time.localtime()[3], avg_moisture, analog.read(0), analog.read(1))
     
     soil_data.write(moisture)
     soil_data.write("\n")
