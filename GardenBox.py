@@ -11,6 +11,7 @@ username = raw_input("Type in the User name for your computer (the one you'll be
 ip = raw_input("Type in the IP address of your computer (example: 192.168.0.100): ")
 directory = raw_input("Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): ")
 
+os.system("nohup python Gardenbox.py &")        #Ignores the hangup signal, allowing it to operate without SSH active
 
 #The 'solar' function measures the amount of sunlight the Pi, and therefore plant, recieves.
 #The 'if' statements convert the current time to an appropriate coordiante on the x-axis.
