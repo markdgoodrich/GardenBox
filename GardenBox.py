@@ -6,6 +6,12 @@ import time
 import os                                                                            
 from envirophat import light, weather, analog
 
+#prompts the user for the sepcifics of the computer where the data will be exported to
+username = raw_input("Type in the User name for your computer (the one you'll be sending the data files to): ")
+ip = raw_input("Type in the IP address of your computer (example: 192.168.0.100): ")
+directory = raw_input("Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): ")
+
+
 #The 'solar' function measures the amount of sunlight the Pi, and therefore plant, recieves.
 #The 'if' statements convert the current time to an appropriate coordiante on the x-axis.
 #This ensures accurate graphical data.
@@ -27,7 +33,7 @@ def solar():
     sun_data.write(sun)
     sun_data.write("\n")
     sun_data.close()
-    os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %sun_data.name)        #Change to desired computer name, IP, and Directory
+    os.system("scp %s %s@%s:%s" %(sun_data.name, username, ip, directory))        #Change to desired computer name, IP, and Directory
     
     return sun
 
@@ -45,7 +51,7 @@ def temperature():
     temp_data.write(temp)
     temp_data.write("\n")
     temp_data.close()
-    os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %temp_data.name)   #Change to desired computer name, IP, and Directory
+    os.system("scp %s %s@%s:%s" %(temp_data.name, username, ip, directory))   #Change to desired computer name, IP, and Directory
 
     return temp
 
@@ -65,7 +71,7 @@ def soil_moisture():
     soil_data.write(moisture)
     soil_data.write("\n")
     soil_data.close()
-    os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %soil_data.name)  #Change to desired computer name, IP, and Directory
+    os.system("scp %s %s@%s:%s" %(soil_data.name, username, ip, directory))  #Change to desired computer name, IP, and Directory
 
     return moisture
 
