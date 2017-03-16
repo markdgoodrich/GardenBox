@@ -44,12 +44,20 @@ You are now ready to start recording data.
 
 Collecting Data
 ---------------
-To ensure data is being copied from the Pi to your computer, make sure you have edited any calls of `os.system("scp %s owner1@192.168.0.101:~/Documents/LemonTreePi/Data_Text" %sun_data.name)` (Lines 30, 48, 68) with your own user/computer name, IP address, and desired file directory.
-
 To constantly record & transmit data, type:
 ```
 cd GardenBox
-nohup python GardenBox.py &
+python GardenBox.py
 ```
-
+You will be prompted asking for your computer's User name, IP address, and the desired file directory for the exported data files.
+Hit `Enter` after each prompt.
+```
+Type in the User name for your computer (the one you'll be sending the data files to): 
+Type in the IP address of your computer (example: 192.168.0.100): 
+Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): 
+```
+You will see this message:
+```
+#insert nohup message out to nohup.out
+```
 You can now `exit` from your Pi; the monitoring process will continue without halting.
