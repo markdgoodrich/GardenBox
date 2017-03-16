@@ -58,6 +58,6 @@ Type the directory and folder path where you'd like the data to transfer to (exa
 ```
 You will see this message:
 ```
-#insert nohup message out to nohup.out
+noup: appending output to 'nohup.out'
 ```
 You can now `exit` from your Pi; the monitoring process will continue without halting.
