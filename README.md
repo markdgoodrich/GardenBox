@@ -50,15 +50,15 @@ cd GardenBox
 ```
 Then, type:
 ```
-nohup python Gardenbox.py Username IP.address ~/Path/To/Folder &
+nohup python Gardenbox.py Username IP.address /Path/To/Folder &
 ```
-where `Username` is the username for your computer destination computer, `IP.address` is the IP address of that computer, and `~/Path/To/Folder` is the directory where you want your exported data files. 
-As an example, assume your username is 'owner1', your IP address is 192.168.0.100, and you want to store your data in '~/Documents/GardenBox/Data_Text', then you would type:
+where `Username` is the username for your computer destination computer, `IP.address` is the IP address of that computer, and `/Path/To/Folder` is the directory where you want your exported data files. 
+As an example, assume your username is 'owner1', your IP address is 192.168.0.100, and you want to store your data in '/Documents/GardenBox/Data_Text', then you would type:
 ```
-nohup python GardenBox.py owner1 192.168.0.100 ~/Documents/GardenBox/Data_Text &
+nohup python GardenBox.py owner1 192.168.0.100 /Documents/GardenBox/Data_Text &
 ```
 You will see this message:
 ```
-noup: appending output to 'nohup.out'
+nohup: ignoring input and appending output to 'nohup.out'
 ```
 You can now `exit` from your Pi; the monitoring process will continue without halting.
