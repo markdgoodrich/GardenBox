@@ -12,8 +12,6 @@ username = sys.argv[1]
 ip = sys.argv[2]
 directory = sys.argv[3]
 
-os.system("nohup python ~/GardenBox/GardenBox.py &")        #Ignores the hangup signal, allowing it to operate without SSH active
-
 #The 'solar' function measures the amount of sunlight the Pi, and therefore plant, recieves.
 #The 'if' statements convert the current time to an appropriate coordiante on the x-axis.
 #This ensures accurate graphical data.
