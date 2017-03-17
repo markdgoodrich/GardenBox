@@ -10,7 +10,7 @@ from envirophat import light, weather, analog
 #takes the arguments from the nohup command
 username = sys.argv[1]
 ip = sys.argv[2]
-directory = sys,argv[3]
+directory = sys.argv[3]
 
 os.system("nohup python ~/GardenBox/GardenBox.py &")        #Ignores the hangup signal, allowing it to operate without SSH active
 
