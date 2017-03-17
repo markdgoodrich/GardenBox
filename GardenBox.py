@@ -32,7 +32,7 @@ def solar():
     sun_data.write(sun)
     sun_data.write("\n")
     sun_data.close()
-    os.system("scp %s %s@%s:%s" %(sun_data.name, username, ip, directory))        
+    os.system("scp %s %s@%s:~%s" %(sun_data.name, username, ip, directory))        
     
     return sun
 
@@ -49,7 +49,7 @@ def temperature():
     temp_data.write(temp)
     temp_data.write("\n")
     temp_data.close()
-    os.system("scp %s %s@%s:%s" %(temp_data.name, username, ip, directory))   
+    os.system("scp %s %s@%s:~%s" %(temp_data.name, username, ip, directory))   
 
     return temp
 
@@ -69,7 +69,7 @@ def soil_moisture():
     soil_data.write(moisture)
     soil_data.write("\n")
     soil_data.close()
-    os.system("scp %s %s@%s:%s" %(soil_data.name, username, ip, directory))  
+    os.system("scp %s %s@%s:~%s" %(soil_data.name, username, ip, directory))  
 
     return moisture
 
