@@ -8,7 +8,7 @@ A simple monitoring system for your potted plants and windowsill gardens that wi
 * Received Sunlight
 
 
-This system uses [RaspberryPi](https://www.raspberrypi.org/products/), the Pimoroni [Enviro pHat](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-phat), and SparkFun's [Soil Moisture Sensor](https://learn.sparkfun.com/tutorials/soil-moisture-sensor-hookup-guide).
+This system uses [RaspberryPi](https://www.raspberrypi.org/), the Pimoroni [Enviro pHat](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-phat), and SparkFun's [Soil Moisture Sensor](https://learn.sparkfun.com/tutorials/soil-moisture-sensor-hookup-guide).
 
 ----------------------
 All collected data is copied and updated to a computer & destination designated by the user.  
