@@ -47,14 +47,15 @@ Collecting Data
 To constantly record & transmit data, type:
 ```
 cd GardenBox
-python GardenBox.py
 ```
-You will be prompted asking for your computer's User name, IP address, and the desired file directory for the exported data files.
-Hit `Enter` after each prompt.
+Then, type:
 ```
-Type in the User name for your computer (the one you'll be sending the data files to): 
-Type in the IP address of your computer (example: 192.168.0.100): 
-Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): 
+nohup python Gardenbox.py Username IP.address ~/Path/To/Folder
+```
+'Username' is the username for your computer destination computer, 'IP.address' is the IP address of that computer, and '~/Path/To/Folder' is the directory where you want your exported data files. 
+As an example, assume your username is 'owner1', your IP address is 192.168.0.100, and you want to store your data in '~/Documents/GardenBox/Data_Text', then you would type:
+```
+nohup python GardenBox.py owner1 192.168.0.100 ~/Documents/GardenBox/Data_Text &
 ```
 You will see this message:
 ```
