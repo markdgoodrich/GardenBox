@@ -3,13 +3,14 @@
 #
 import math
 import time
-import os                                                                            
+import os
+import sys
 from envirophat import light, weather, analog
 
-#prompts the user for the specifics of the computer where the data will be exported to
-username = raw_input("Type in the User name for your computer (the one you'll be sending the data files to): ")
-ip = raw_input("Type in the IP address of your computer (example: 192.168.0.100): ")
-directory = raw_input("Type the directory and folder path where you'd like the data to transfer to (example: ~/Documents/LemonTreePi/Data_Text): ")
+#takes the arguments from the nohup command
+username = sys.argv[1]
+ip = sys.argv[2]
+directory = sys,argv[3]
 
 os.system("nohup python ~/GardenBox/GardenBox.py &")        #Ignores the hangup signal, allowing it to operate without SSH active
 
@@ -94,7 +95,7 @@ while True:
     time.sleep(0.5)                                                                 #To prevent CPU from running at 99.9%
 
 #This update:
-#Added a prompt for user-specified computer & directory for exported data
+#User, IP, and directory are now specifed during nohup
 
 #Things to do: 
 #               Optional: Have a report emailed every day as well
