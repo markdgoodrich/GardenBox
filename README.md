@@ -50,12 +50,14 @@ cd GardenBox
 ```
 Then, type:
 ```
-nohup python Gardenbox.py Username IP.address /Path/To/Folder &
+python Record_Data.py
 ```
-where `Username` is the username for your computer destination computer, `IP.address` is the IP address of that computer, and `/Path/To/Folder` is the directory where you want your exported data files. 
-As an example, assume your username is 'owner1', your IP address is 192.168.0.100, and you want to store your data in '/Documents/GardenBox/Data_Text', then you would type:
+This will initiate the Data Recording Set-up.  You will be prompted to enter your username, where `Username` is the username for your computer destination computer, `IP.address` is the IP address of that computer, and `/Path/To/Folder` is the directory where you want your exported data files. 
+As an example, assume your username is 'MarkG', your IP address is 192.168.0.100, and you want to store your data in '~/Documents/GardenBox/Data_Text', then you would type:
 ```
-nohup python GardenBox.py owner1 192.168.0.100 /Documents/GardenBox/Data_Text &
+Enter your username (ex. owner1): MarkG
+Enter the IP Address (ex. 192.168.0.XXX): 192.168.0.100
+Enter the exported data location (ex. ~/Documents): ~/Documents/GardenBox/Data_Text
 ```
 You will see this message:
 ```
