@@ -57,8 +57,10 @@ As an example, assume your username is 'MarkG', your IP address is 192.168.0.100
 ```
 Enter your username (ex. owner1): MarkG
 Enter the IP Address (ex. 192.168.0.XXX): 192.168.0.100
-Enter the exported data location (ex. ~/Documents): ~/Documents/GardenBox/Data_Text
+Enter the exported data location (ex. /Documents): /Documents/GardenBox/Data_Text
 ```
+**Note:** Do not include the Tilde "~" in your directory input; it's already hard-coded into the program.
+
 You will see this message:
 ```
 nohup: ignoring input and appending output to 'nohup.out'
