@@ -1,10 +1,8 @@
 import sys
 import os
 
-print"----------------------------------"
-print"----------  GardenBox  -----------"
-print"----------------------------------\n"
-print "    Data Recording Setup\n"
+
+print "    GardenBox Data Recording Setup\n"
 
 
 
